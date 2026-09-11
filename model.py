@@ -15,8 +15,15 @@ def log_softmax(logits, axis=-1):
     return shifted-fenmu
     pass
 
-# Step 2 - softmax (not yet solved)
-# TODO: implement
+# Step 2 - softmax
+def softmax(logits, axis=-1):
+    # TODO: Convert an array of logits into a probability distribution along a given axis
+    M=np.max(logits,axis=axis,keepdims=True)
+    shifted=logits-M 
+    fenzi=np.exp(shifted) 
+    fenmu=np.sum(np.exp(shifted),axis=axis,keepdims=True)
+    return fenzi/fenmu
+    pass
 
 # Step 3 - gather_token_logprobs (not yet solved)
 # TODO: implement
