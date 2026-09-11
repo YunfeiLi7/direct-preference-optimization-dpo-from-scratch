@@ -35,8 +35,20 @@ def gather_token_logprobs(log_probs, token_ids):
 # Step 4 - masked_sequence_logprob (not yet solved)
 # TODO: implement
 
-# Step 5 - init_policy_params (not yet solved)
-# TODO: implement
+# Step 5 - init_policy_params
+def init_policy_params(vocab_size, d_model, rng=None):
+    # TODO: Initialize the policy language-model parameters with small random values
+    if rng is None:
+        rng=np.random.default_rng()
+    token_embedding=rng.normal(0.0,0.02,size=(vocab_size,d_model))
+    W_out=rng.normal(0.0,0.02,size=(d_model,vocab_size))
+    b_out=np.zeros(vocab_size)
+    return {
+        "W_out": W_out, 
+        'b_out':b_out,
+        "embed":token_embedding
+    }
+    pass
 
 # Step 6 - policy_token_logits (not yet solved)
 # TODO: implement
